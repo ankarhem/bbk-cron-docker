@@ -13,6 +13,7 @@ services:
     image: idealpink/bbk-cron
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /path/to/data:/data
 ```
 

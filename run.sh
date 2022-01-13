@@ -1,13 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 set -xe
 
 OUTPUT_FILE="/data/results.csv"
-RESULTS="$(bbk_cli | awk -F ': ' '{print $2}' | awk '{ gsub(/^[ \n]+/,""); print $1}')"
+RESULTS="$(bbk_cli)"
+COLUMN="$(echo "${RESULTS}" | awk -F ': ' '{print $2}')"
+CLEANED="$(echo "${COLUMN}" | tr '\n' ';' | awk '{ gsub(/(;[ ]+)/,";"); print }' | awk '{ gsub(/( Mbit\/s)|( ms)/, ""); print }')"
 
-for line in $RESULTS
-do
-  printf "$line;" >> $OUTPUT_FILE
-done
-
-printf "\n" >> $OUTPUT_FILE
+echo $CLEANED >> $OUTPUT_FILE
