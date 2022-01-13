@@ -2,11 +2,12 @@
 
 set -xe
 
-results="$(bbk_cli | awk -F ': ' '{print $2}' | awk '{ gsub(/^[ \n]+/,""); print $1}')"
+OUTPUT_FILE="/data/results.csv"
+RESULTS="$(bbk_cli | awk -F ': ' '{print $2}' | awk '{ gsub(/^[ \n]+/,""); print $1}')"
 
-for line in $results
+for line in $RESULTS
 do
-  printf "$line;" >> /results.csv
+  printf "$line;" >> $OUTPUT_FILE
 done
 
-printf "\n" >> /results.csv
+printf "\n" >> $OUTPUT_FILE

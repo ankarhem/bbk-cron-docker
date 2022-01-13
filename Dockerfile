@@ -16,5 +16,6 @@ COPY . .
 
 RUN crontab /crontab
 RUN touch /var/log/cron.log
+RUN mkdir -p /data
 
-CMD cron && tail -f /var/log/cron.log
+CMD /boot.sh

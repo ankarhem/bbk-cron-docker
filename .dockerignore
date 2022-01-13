@@ -2,6 +2,6 @@
 *
 
 # Whitelist
-!results.csv
 !run.sh
 !crontab
+!boot.sh
