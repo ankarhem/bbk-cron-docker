@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+# Whitelist
+!results.csv
+!run.sh
+!crontab
